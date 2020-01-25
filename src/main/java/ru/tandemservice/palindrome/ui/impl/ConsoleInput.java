@@ -77,9 +77,8 @@ public class ConsoleInput implements UI {
 
     private void selectUser(Scanner in) {
         System.out.print("Enter user name: ");
-        String userName = in.nextLine().trim();
+        String userName = in.nextLine();
 
-        //User name must not be blank
         try {
             user = game.login(userName);
         } catch (InvalidValue e) {
@@ -94,9 +93,8 @@ public class ConsoleInput implements UI {
 
     private void enterPalindrome(Scanner in) {
         System.out.print("Enter palindrome: ");
-        String palindrome = in.nextLine().trim();
+        String palindrome = in.nextLine();
 
-        //Palindrome must not be blank
         try {
             game.setPalindrome(user, palindrome);
         } catch (InvalidValue e) {
