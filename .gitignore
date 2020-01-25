@@ -5,4 +5,5 @@
 *.uml
 .idea/
 /out/
+/target/
 /*/out/
