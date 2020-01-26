@@ -47,9 +47,9 @@ public class ScoringService {
             throw new InvalidValue("Such palindrome is already registered in the database");
         }
         else {
-            Pair<Integer, Integer> course = conversionRateRepo.getConversion();
+            Pair<Integer, Integer> course = conversionRateRepo.getConversion(new Date());
             int phraseLength = phrase.length();
-            int phrasePoint = pointCalc.calculate(new Date(), course, phraseLength);
+            int phrasePoint = pointCalc.calculate(course, phraseLength);
 
             return scoringRepo.save(user, phrase, phrasePoint);
         }
@@ -66,5 +66,9 @@ public class ScoringService {
             phrase = phraseRepo.save(value);
         }
         return phrase;
+    }
+
+    public void addConversionRate(int numLetter, int numPoint) {
+        conversionRateRepo.addConversionRate(numLetter, numPoint);
     }
 }

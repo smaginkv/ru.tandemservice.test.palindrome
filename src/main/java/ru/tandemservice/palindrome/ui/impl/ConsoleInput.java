@@ -52,9 +52,9 @@ public class ConsoleInput implements UI {
         else {
             System.out.println("1. change actual user");
         }
-
         System.out.println("2. try to enter the next palindrome");
         System.out.println("3. leader board");
+        System.out.println("4. add conversion rate");
         System.out.println("0. exit");
         System.out.println("Enter operation number: ");
     }
@@ -68,6 +68,9 @@ public class ConsoleInput implements UI {
         }
         else if (operationNumber == 3) {
             getLeaderBoard();
+        }
+        else if (operationNumber == 4) {
+                addConversionRate(in);
         }
         else if (operationNumber == 0) {
             return false;
@@ -115,6 +118,15 @@ public class ConsoleInput implements UI {
         Set<Pair<User, BigInteger>> leaders = game.getLeaders();
         clearConsole();
         System.out.println(leaders);
+    }
+
+    private void addConversionRate(Scanner in) {
+        System.out.print("Enter conversion rate in format: [(int)numLetter (int)numPoint]");
+        int numLetter = in.nextInt();
+        int numPoint = in.nextInt();
+        in.nextLine();
+
+        game.addConversionRate(numLetter, numPoint);
     }
 
     private void clearConsole() {

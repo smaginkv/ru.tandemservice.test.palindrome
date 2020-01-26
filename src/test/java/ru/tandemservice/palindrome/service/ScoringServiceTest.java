@@ -40,18 +40,28 @@ class ScoringServiceTest {
 
     @Test
     void shouldThrowsWhenDoublePalindrome() throws InvalidValue {
-        scoringService.addUsersPhrase(user, "топот");
-        Exception exception = assertThrows(InvalidValue.class, () -> scoringService.addUsersPhrase(user, "топот"));
+        scoringService.addUsersPhrase(user, "кок");
+        Exception exception = assertThrows(InvalidValue.class, () -> scoringService.addUsersPhrase(user, "кок"));
         assertEquals("Such palindrome is already registered in the database", exception.getMessage());
     }
 
     @Test
-    void shouldCorrectWhenChangedConversationRate() {
+    void shouldCorrectWhenChangedConversationRate() throws InvalidValue {
+        scoringService.addConversionRate(1,1);
+        User user1 = game.login("misha");
+        int points = game.setPalindrome(user1, "лол");
+        assertEquals(3, points);
+
+        scoringService.addConversionRate(2,1);
+        points = game.setPalindrome(user1, "кекек");
+        assertEquals(2, points);
 
     }
 
     @Test
     void shouldOkWhenGetLeaders() throws InvalidValue {
+        scoringService.addConversionRate(1,1);
+
         User user1 = game.login("vasya");
         game.setPalindrome(user1, "топот");
         User user2 = game.login("petya");
@@ -63,14 +73,16 @@ class ScoringServiceTest {
 
     @Test
     void shouldOkWhenGetMoreLeaders() throws InvalidValue {
+        scoringService.addConversionRate(1,1);
+
         User user1 = game.login("vasya");
-        game.setPalindrome(user1, "топот");
+        game.setPalindrome(user1, "поп");
         User user2 = game.login("petya");
-        game.setPalindrome(user2, "топот");
+        game.setPalindrome(user2, "поп");
         User user3 = game.login("misha");
-        game.setPalindrome(user3, "топот");
+        game.setPalindrome(user3, "поп");
         User user4 = game.login("гриша");
-        game.setPalindrome(user4, "топот");
+        game.setPalindrome(user4, "поп");
         game.setPalindrome(user4, "вов");
 
         Set<Pair<User, BigInteger>> leaders = game.getLeaders();

@@ -32,4 +32,8 @@ public class Game {
     public Set<Pair<User, BigInteger>>  getLeaders() {
         return scoringService.getLeaders(3);
     }
+
+    public void addConversionRate(int numLetter, int numPoint) {
+        scoringService.addConversionRate(numLetter, numPoint);
+    }
 }
