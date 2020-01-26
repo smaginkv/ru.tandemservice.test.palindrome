@@ -40,6 +40,7 @@ public class ConsoleInput implements UI {
             }
         }
         in.close();
+        System.err.println("Exit application");
         System.exit(0);
     }
 
@@ -54,7 +55,7 @@ public class ConsoleInput implements UI {
         }
         System.out.println("2. try to enter the next palindrome");
         System.out.println("3. leader board");
-        System.out.println("4. add conversion rate");
+        System.out.println("4. add new conversion rate");
         System.out.println("0. exit");
         System.out.println("Enter operation number: ");
     }
@@ -70,7 +71,7 @@ public class ConsoleInput implements UI {
             getLeaderBoard();
         }
         else if (operationNumber == 4) {
-                addConversionRate(in);
+            addConversionRate(in);
         }
         else if (operationNumber == 0) {
             return false;
@@ -106,6 +107,7 @@ public class ConsoleInput implements UI {
         try {
             game.setPalindrome(user, palindrome);
         } catch (InvalidValue e) {
+            clearConsole();
             System.err.println(e.getMessage());
             return;
         }
