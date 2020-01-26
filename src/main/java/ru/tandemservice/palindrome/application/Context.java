@@ -14,7 +14,7 @@ import ru.tandemservice.palindrome.bh.PointNumberCalculator;
 import ru.tandemservice.palindrome.service.ScoringService;
 import ru.tandemservice.palindrome.service.UserService;
 import ru.tandemservice.palindrome.ui.UI;
-import ru.tandemservice.palindrome.ui.impl.ConsoleInput;
+import ru.tandemservice.palindrome.ui.impl.ConsoleUI;
 
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ import java.util.HashMap;
  * Класс в котором хранятся все зависисмости
  * @author Smagin-KV
  */
-@SuppressWarnings("WeakerAccess")
+
 public class Context {
     private static Context context;
     private HashMap<String, Object> objectMap;
@@ -45,7 +45,7 @@ public class Context {
     }
 
     private UI getUi() {
-        UI ui = (UI) objectMap.computeIfAbsent("ui", (k) -> new ConsoleInput());
+        UI ui = (UI) objectMap.computeIfAbsent("ui", (k) -> new ConsoleUI());
         ui.setGame(getGame());
         return ui;
     }

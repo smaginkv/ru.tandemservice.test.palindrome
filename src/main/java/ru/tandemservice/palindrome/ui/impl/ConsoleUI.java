@@ -15,7 +15,7 @@ import java.util.Set;
  * Класс который осуществляет взаимодействие с пользователем через консоль
  * @author Smagin K.V.
  */
-public class ConsoleInput implements UI {
+public class ConsoleUI implements UI {
 
     private User user;
     private Game game;
