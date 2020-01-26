@@ -18,6 +18,10 @@ import ru.tandemservice.palindrome.ui.impl.ConsoleInput;
 
 import java.util.HashMap;
 
+/**
+ * Класс в котором хранятся все зависисмости
+ * @author Smagin-KV
+ */
 @SuppressWarnings("WeakerAccess")
 public class Context {
     private static Context context;

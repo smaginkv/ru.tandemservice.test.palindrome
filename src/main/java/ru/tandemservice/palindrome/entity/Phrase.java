@@ -2,6 +2,10 @@ package ru.tandemservice.palindrome.entity;
 
 import java.util.Objects;
 
+/**
+ * Сущность фразы - палиндрома
+ * @author Smagin-KV
+ */
 public class Phrase {
     private String value;
 

@@ -5,6 +5,11 @@ import ru.tandemservice.palindrome.entity.Phrase;
 
 import java.util.*;
 
+/**
+ * Класс - имплементация репозитория, организованного в памяти
+ * репозиторий хранит в себе все палиндромы (фразы) которые использовались в игре
+ * @author Smagin-KV
+ */
 public class PhraseRepoRamImpl implements PhraseRepo {
     private Map<String, Phrase> phrases;
 

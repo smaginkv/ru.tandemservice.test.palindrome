@@ -2,6 +2,10 @@ package ru.tandemservice.palindrome.entity;
 
 import java.util.Objects;
 
+/**
+ * Сущность пользователя
+ * @author Smagin-KV
+ */
 public class User {
 
     private static long counter;

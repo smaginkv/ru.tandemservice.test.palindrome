@@ -5,6 +5,11 @@ import ru.tandemservice.palindrome.entity.User;
 
 import java.util.HashMap;
 
+/**
+ * Класс - имплементация репозитория, организованного в памяти
+ * репозиторий хранит в себе всех пользователей которые участвовали в игре
+ * @author Smagin-KV
+ */
 public class UserRepoRamImpl implements UserRepo {
     private HashMap<String, User> users;
 

@@ -11,6 +11,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Класс который осуществляет взаимодействие с пользователем через консоль
+ * @author Smagin K.V.
+ */
 public class ConsoleInput implements UI {
 
     private User user;
@@ -21,6 +25,9 @@ public class ConsoleInput implements UI {
         this.game = game;
     }
 
+    /**
+     * Запуск бесконечного цикла ожидания команд
+     */
     @Override
     public void run() {
         Scanner in = new Scanner(System.in);
@@ -44,6 +51,9 @@ public class ConsoleInput implements UI {
         System.exit(0);
     }
 
+    /**
+     * Печать приветствия перед выполнением следующего шага
+     */
     private void printGreeting() {
 
         System.out.printf("actual user is %s \n", user);
@@ -60,6 +70,12 @@ public class ConsoleInput implements UI {
         System.out.println("Enter operation number: ");
     }
 
+    /**
+     * Выбор операции, которую пользователь указал по номеру
+     * @param operationNumber - номер операции
+     * @param in - сканер для обработки дальнейших команд
+     * @return - признак прекращения работы и выхода из приложения
+     */
     private boolean chooseOperationNumber(int operationNumber, Scanner in) {
         if (operationNumber == 1) {
             selectUser(in);
@@ -81,9 +97,12 @@ public class ConsoleInput implements UI {
             System.err.println("wrong operation, try again.");
         }
         return true;
-
     }
 
+    /**
+     * Операция выбора пользователя по имени
+     * @param in - сканер для обработки дальнейших команд
+     */
     private void selectUser(Scanner in) {
         System.out.print("Enter user name: ");
         String userName = in.nextLine();
@@ -100,6 +119,10 @@ public class ConsoleInput implements UI {
 
     }
 
+    /**
+     * Операция по вводу палиндрома
+     * @param in - сканер для обработки дальнейших команд
+     */
     private void enterPalindrome(Scanner in) {
         System.out.print("Enter palindrome: ");
         String palindrome = in.nextLine();
@@ -116,12 +139,19 @@ public class ConsoleInput implements UI {
         System.out.println("Done!");
     }
 
+    /**
+     * Операция по выводу доски лидеров
+     */
     private void getLeaderBoard() {
         Set<Pair<User, BigInteger>> leaders = game.getLeaders();
         clearConsole();
         System.out.println(leaders);
     }
 
+    /**
+     * Операция по добавлению курса конверсии букв палиндрома в баллы
+     * @param in - сканер для обработки дальнейших команд
+     */
     private void addConversionRate(Scanner in) {
         System.out.print("Enter conversion rate in format: [(int)numLetter (int)numPoint]: ");
         int numLetter = in.nextInt();
@@ -134,6 +164,9 @@ public class ConsoleInput implements UI {
         System.out.println("Done!");
     }
 
+    /**
+     * Операция по отделению следующего шага от предыдущих на консоли
+     */
     private void clearConsole() {
         System.out.println();
         System.out.println();
