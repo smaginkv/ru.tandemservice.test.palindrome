@@ -1,13 +1,15 @@
 package ru.tandemservice.palindrome.ui.impl;
 
+import javafx.util.Pair;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 import ru.tandemservice.palindrome.bh.Game;
 import ru.tandemservice.palindrome.entity.User;
 import ru.tandemservice.palindrome.ui.UI;
 
+import java.math.BigInteger;
 import java.util.InputMismatchException;
-import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ConsoleInput implements UI {
 
@@ -33,15 +35,17 @@ public class ConsoleInput implements UI {
                 }
             } catch (InputMismatchException e) {
                 in.next();
-                System.out.println("wrong operation, try again.");
+                clearConsole();
+                System.err.println("wrong operation, try again.");
             }
         }
-        in.close();// terminate Treads?
+        in.close();
         System.exit(0);
     }
 
     private void printGreeting() {
 
+        System.out.printf("actual user is %s \n", user);
         if (null == user) {
             System.out.println("1. select actual user");
         }
@@ -52,7 +56,7 @@ public class ConsoleInput implements UI {
         System.out.println("2. try to enter the next palindrome");
         System.out.println("3. leader board");
         System.out.println("0. exit");
-        System.out.print("Enter operation number: ");
+        System.out.println("Enter operation number: ");
     }
 
     private boolean chooseOperationNumber(int operationNumber, Scanner in) {
@@ -69,7 +73,8 @@ public class ConsoleInput implements UI {
             return false;
         }
         else {
-            System.out.println("wrong operation, try again.");
+            clearConsole();
+            System.err.println("wrong operation, try again.");
         }
         return true;
 
@@ -82,7 +87,7 @@ public class ConsoleInput implements UI {
         try {
             user = game.login(userName);
         } catch (InvalidValue e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             return;
         }
 
@@ -98,7 +103,7 @@ public class ConsoleInput implements UI {
         try {
             game.setPalindrome(user, palindrome);
         } catch (InvalidValue e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             return;
         }
 
@@ -107,12 +112,13 @@ public class ConsoleInput implements UI {
     }
 
     private void getLeaderBoard() {
-        Map<Integer, User> leaders = game.getLeaders();
+        Set<Pair<User, BigInteger>> leaders = game.getLeaders();
         clearConsole();
         System.out.println(leaders);
     }
 
     private void clearConsole() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println();
+        System.out.println();
     }
 }

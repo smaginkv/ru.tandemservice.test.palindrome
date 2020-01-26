@@ -1,11 +1,13 @@
 package ru.tandemservice.palindrome.bh;
 
+import javafx.util.Pair;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 import ru.tandemservice.palindrome.entity.User;
 import ru.tandemservice.palindrome.service.ScoringService;
 import ru.tandemservice.palindrome.service.UserService;
 
-import java.util.Map;
+import java.math.BigInteger;
+import java.util.Set;
 
 public class Game {
     private UserService userService;
@@ -24,10 +26,10 @@ public class Game {
 
     public int setPalindrome(User user, String value) throws InvalidValue {
         palindromeVerifier.verify(value);
-        return scoringService.getPhraseByUser(user, value);
+        return scoringService.addUsersPhrase(user, value);
     }
 
-    public Map<Integer, User> getLeaders() {
-        return null;
+    public Set<Pair<User, BigInteger>>  getLeaders() {
+        return scoringService.getLeaders(3);
     }
 }
