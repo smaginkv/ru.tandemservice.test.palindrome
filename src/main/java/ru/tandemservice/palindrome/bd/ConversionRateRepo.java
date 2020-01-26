@@ -7,5 +7,5 @@ import java.util.Date;
 public interface ConversionRateRepo {
     Pair<Integer, Integer> getConversion(Date date);
 
-    void addConversionRate(int numLetter, int numPoint);
+    Pair<Integer, Integer> addConversionRate(int numLetter, int numPoint);
 }

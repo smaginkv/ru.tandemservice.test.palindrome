@@ -121,12 +121,15 @@ public class ConsoleInput implements UI {
     }
 
     private void addConversionRate(Scanner in) {
-        System.out.print("Enter conversion rate in format: [(int)numLetter (int)numPoint]");
+        System.out.print("Enter conversion rate in format: [(int)numLetter (int)numPoint]: ");
         int numLetter = in.nextInt();
         int numPoint = in.nextInt();
         in.nextLine();
 
         game.addConversionRate(numLetter, numPoint);
+
+        clearConsole();
+        System.out.println("Done!");
     }
 
     private void clearConsole() {

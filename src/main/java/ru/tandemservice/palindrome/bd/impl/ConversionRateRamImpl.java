@@ -20,7 +20,9 @@ public class ConversionRateRamImpl implements ConversionRateRepo {
     }
 
     @Override
-    public void addConversionRate(int numLetter, int numPoint) {
-        conversions.put(new Date(), new Pair<>(numLetter, numPoint));
+    public Pair<Integer, Integer> addConversionRate(int numLetter, int numPoint) {
+        Pair<Integer, Integer> conversionRate = new Pair<>(numLetter, numPoint);
+        conversions.put(new Date(), conversionRate);
+        return conversionRate;
     }
 }

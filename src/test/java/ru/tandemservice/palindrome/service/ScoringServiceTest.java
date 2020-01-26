@@ -47,7 +47,6 @@ class ScoringServiceTest {
 
     @Test
     void shouldCorrectWhenChangedConversationRate() throws InvalidValue {
-        scoringService.addConversionRate(1,1);
         User user1 = game.login("misha");
         int points = game.setPalindrome(user1, "лол");
         assertEquals(3, points);
@@ -59,21 +58,7 @@ class ScoringServiceTest {
     }
 
     @Test
-    void shouldOkWhenGetLeaders() throws InvalidValue {
-        scoringService.addConversionRate(1,1);
-
-        User user1 = game.login("vasya");
-        game.setPalindrome(user1, "топот");
-        User user2 = game.login("petya");
-        game.setPalindrome(user2, "топот");
-        game.login("misha");
-        Set<Pair<User, BigInteger>> leaders = game.getLeaders();
-        assertEquals(2, leaders.size());
-    }
-
-    @Test
     void shouldOkWhenGetMoreLeaders() throws InvalidValue {
-        scoringService.addConversionRate(1,1);
 
         User user1 = game.login("vasya");
         game.setPalindrome(user1, "поп");
